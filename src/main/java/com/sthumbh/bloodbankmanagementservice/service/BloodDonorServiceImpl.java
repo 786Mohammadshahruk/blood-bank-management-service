@@ -1,5 +1,6 @@
 package com.sthumbh.bloodbankmanagementservice.service;
 
+import com.sthumbh.bloodbankmanagementservice.Enum.BloodEnum;
 import com.sthumbh.bloodbankmanagementservice.dto.DonorDto;
 import com.sthumbh.bloodbankmanagementservice.entitiy.BloodDonor;
 import com.sthumbh.bloodbankmanagementservice.mapper.DonorMapper;
@@ -35,9 +36,9 @@ public class BloodDonorServiceImpl implements BloodDonorService{
         DonorMapper.MAP_TO_BLOOD_DONOR(donorDto,bloodDonor);
 
         if(blood_groups.contains(bloodDonor.getBloodGroup())){
-            if (bloodDonor.getBloodGroup().equals("A+")){
+            if (bloodDonor.getBloodGroup().equals(BloodEnum.A_POSITIVE.name())){
                 List<String> canDonateTo = new ArrayList<>();
-                canDonateTo.add("A+");
+                canDonateTo.add(BloodEnum.A_POSITIVE.name());
                 canDonateTo.add("AB+");
 
                 List<String> canReceiveFrom = new ArrayList<>();

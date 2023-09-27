@@ -29,7 +29,10 @@ public class BloodDonorController {
     }
 
     @GetMapping("/fetch/by/{Id}")
-    public ResponseEntity<DonorDto> fetchUserById(@PathVariable("Id") Long Id){
+    public ResponseEntity<DonorDto> fetchUserById(@PathVariable("Id") Long Id,
+                                                  @RequestParam(name = "donateBloodTo",required = false)Boolean donateBloodTo,
+                                                  @RequestParam(name = "receiveBloodFrom",required = false)Boolean receiveBloodFrom)
+    {
         return bloodDonorService.fetchDonorById(Id);
     }
 
