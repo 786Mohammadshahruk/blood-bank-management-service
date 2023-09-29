@@ -1,7 +1,7 @@
 package com.sthumbh.bloodbankmanagementservice.mapper;
 
-import com.sthumbh.bloodbankmanagementservice.dto.DonorDto;
-import com.sthumbh.bloodbankmanagementservice.entitiy.BloodDonor;
+import com.sthumbh.bloodbankmanagementservice.dto.BloodRequestDto;
+import com.sthumbh.bloodbankmanagementservice.entitiy.BloodStockDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
@@ -9,21 +9,21 @@ import java.util.function.Function;
 @Service
 public class DonorMapper {
 
-    public final Function<BloodDonor,DonorDto> MAP_TO_DONOR_DTO = (bloodDonor) ->{
+    public final Function<BloodStockDetails, BloodRequestDto> MAP_TO_DONOR_DTO = (bloodStockDetails) ->{
 
-        DonorDto donorDto = new DonorDto();
-        donorDto.setId(bloodDonor.getId());
+        BloodRequestDto bloodRequestDto = new BloodRequestDto();
+        //bloodRequestDto.setId(bloodStockDetails.getId());
 
-        donorDto.setBloodGroup(bloodDonor.getBloodGroup());
-        donorDto.setDonateTo(bloodDonor.getDonateTo());
-        donorDto.setReceiveFrom(bloodDonor.getReceiveFrom());
-        return donorDto;
+        bloodRequestDto.setBloodType(bloodStockDetails.getBloodType());
+        bloodRequestDto.setDonateTo(bloodStockDetails.getDonateTo());
+        bloodRequestDto.setReceiveFrom(bloodStockDetails.getReceiveFrom());
+        return bloodRequestDto;
     };
 
-    public static  void MAP_TO_BLOOD_DONOR(DonorDto donorDto, BloodDonor bloodDonor){
+    public static  void MAP_TO_BLOOD_DONOR(BloodRequestDto bloodRequestDto, BloodStockDetails bloodStockDetails){
 
 
-        bloodDonor.setBloodGroup(donorDto.getBloodGroup());
+        bloodStockDetails.setBloodType(bloodRequestDto.getBloodType());
 
     }
 
