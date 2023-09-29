@@ -12,7 +12,7 @@ import java.util.List;
 public class DonorDto {
 
     private Long Id;
-    private String donorName;
+
     private String bloodGroup;
     private List<String> donateTo;
     private List<String> receiveFrom;

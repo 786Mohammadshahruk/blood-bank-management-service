@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,9 @@ public class BloodDonor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String name;
+
     private String bloodGroup;
+//    @NotNull(message = "cannot be null!")
     private List<String> donateTo;
     private List<String> receiveFrom;
 

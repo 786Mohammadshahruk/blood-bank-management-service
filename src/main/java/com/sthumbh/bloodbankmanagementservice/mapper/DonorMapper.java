@@ -13,7 +13,7 @@ public class DonorMapper {
 
         DonorDto donorDto = new DonorDto();
         donorDto.setId(bloodDonor.getId());
-        donorDto.setDonorName(bloodDonor.getName());
+
         donorDto.setBloodGroup(bloodDonor.getBloodGroup());
         donorDto.setDonateTo(bloodDonor.getDonateTo());
         donorDto.setReceiveFrom(bloodDonor.getReceiveFrom());
@@ -22,7 +22,7 @@ public class DonorMapper {
 
     public static  void MAP_TO_BLOOD_DONOR(DonorDto donorDto, BloodDonor bloodDonor){
 
-        bloodDonor.setName(donorDto.getDonorName());
+
         bloodDonor.setBloodGroup(donorDto.getBloodGroup());
 
     }
