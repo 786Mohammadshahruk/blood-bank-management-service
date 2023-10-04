@@ -1,7 +1,10 @@
 package com.sthumbh.bloodbankmanagementservice.controller;
 
 import com.sthumbh.bloodbankmanagementservice.dto.BloodRequestDto;
+import com.sthumbh.bloodbankmanagementservice.dto.BloodStockRequestDto;
+import com.sthumbh.bloodbankmanagementservice.dto.BloodStockResponseDto;
 import com.sthumbh.bloodbankmanagementservice.entitiy.BloodStockDetails;
+import com.sthumbh.bloodbankmanagementservice.entitiy.BloodStockRequest;
 import com.sthumbh.bloodbankmanagementservice.exception.UnknownBloodException;
 import com.sthumbh.bloodbankmanagementservice.model.response.MetaData;
 import com.sthumbh.bloodbankmanagementservice.model.response.ResourceData;
@@ -39,6 +42,25 @@ public class BloodDonorController {
                 .message("SUCCESS")
                 .version("v1")
                 .build();
+    }
+
+
+    @PostMapping(path = "/add-bloods-stock")
+    public ResponseEntity<ResponseModel> addBloods(@RequestBody List<BloodStockRequestDto> bloodStockRequest) throws UnknownBloodException {
+        ResourceData<String> resourceData = new ResourceData<>();
+        resourceData.setData(bloodDonorService.addBloodStockDetails(bloodStockRequest));
+        return new ResponseEntity<>(getResponseData(getMetaData(), resourceData), HttpStatus.OK);
+    }
+
+
+    @GetMapping(name = "/getBloodStocks")
+    public ResponseEntity<ResponseModel> getBloodStokes(@RequestParam(name = "stateCode") String stateCode,
+                                                        @RequestParam(name = "districtCode") String districtCode,
+                                                        @RequestParam(name = "bloodType") String bloodType
+    ) {
+        ResourceData<BloodStockResponseDto> resourceData = new ResourceData<>();
+        resourceData.setData(bloodDonorService.getBloodStokes(stateCode, districtCode, bloodType));
+        return new ResponseEntity<>(getResponseData(getMetaData(), resourceData), HttpStatus.OK);
     }
 
 
